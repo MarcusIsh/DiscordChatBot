@@ -1,0 +1,10 @@
+{
+    "name": "CutieSquadRankingsBot",
+    "version": "1.0.0",
+    "description" : "Cutie Squad Clan LoL rankings bot",
+    "keywords": ["util", "functional", "server", "client", "browser"],
+    "main": "bot.js",
+    "author": "Ishadaha",
+    "contributors": ["Railgun1v9"],
+    "dependencies": {}
+}
