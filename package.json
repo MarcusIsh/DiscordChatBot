@@ -1,10 +1,21 @@
 {
     "name": "CutieSquadRankingsBot",
     "version": "1.0.0",
-    "description" : "Cutie Squad Clan LoL rankings bot",
-    "keywords": ["util", "functional", "server", "client", "browser"],
+    "description": "Cutie Squad Clan LoL rankings bot",
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
     "main": "bot.js",
     "author": "Ishadaha",
-    "contributors": ["Railgun1v9"],
-    "dependencies": {}
+    "contributors": [
+        "Railgun1v9"
+    ],
+    "dependencies": {
+        "discord.io": "github:woor/discord.io#gateway_v6",
+        "winston": "^3.2.1"
+    }
 }
