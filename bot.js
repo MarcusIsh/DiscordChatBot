@@ -2,7 +2,7 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 var request = require("request");
-
+var db = require('../db');
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
     colorize: true
