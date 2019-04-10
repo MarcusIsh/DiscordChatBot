@@ -35,6 +35,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                 request(playerData, function (error, response, body) {
                     data = JSON.parse(body)
+                    console.log(data);
                     if(data.id == null){
                         bot.sendMessage({
                             to: channelID,
@@ -50,17 +51,24 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         request(playerRankData, function (error, response, body) {
 
                             rankData = JSON.parse(body)
+                            console.log(rankData);
                             tier = rankData[0].tier
                             rank = rankData[0].rank
+                            
+                            db.connect(function(err) {
+                                if(err) throw err;
+                                db.query("select summonerName from users where summonerName =" + rankData[0].summonerName, function (err, result) {
+                                    if(err) throw err;
+                                    console.log("Result: " + result);
+                                })
+                            })
                             bot.sendMessage({
                                 to: channelID,
-                                message:  args + ' your current ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
+                                message:  args + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
                              });
                         });
                     }
                 });
-            
-                
             break;
          }
      }
