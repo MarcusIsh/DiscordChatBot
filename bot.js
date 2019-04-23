@@ -72,7 +72,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                                 })
                                 bot.sendMessage({
                                     to: channelID,
-                                    message:  "there is currently no rank for: " + name 
+                                    message:  "there is currently no rank for: " + name.replace("_", " ") 
                                 });
                             } else {
                             rankData = JSON.parse(body)
@@ -93,7 +93,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                             
                             bot.sendMessage({
                                 to: channelID,
-                                message:  name + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
+                                message:  name.replace("_", " ") + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
                              });
                          }
                         });
