@@ -31,6 +31,14 @@ function isEmptyObject(obj) {
 }
 
 bot.on('message', function (user, userID, channelID, message, evt) {
+    function isEmptyObject(obj) {
+        for (var key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            return false;
+          }
+        }
+        return true;
+    }
     if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
         var cmd = args[0];
@@ -62,7 +70,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                         request(playerRankData, function (error, response, body) {
                             console.log(Object.keys(body).length == 0);
-                            if(this.isEmptyObject(body) == true) {
+                            if(isEmptyObject(body) == true) {
                                 var noRank = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ data.name +"','"+ data.summonerLevel +"','"+ data.id+"','unranked','','')";
                                 db.query(noRank, function (err, result) {
                                         console.log('successful');
