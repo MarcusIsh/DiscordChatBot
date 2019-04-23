@@ -106,6 +106,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 var rankStr = "Sever Standings:\n\ ";
                 
                 db.query(users, function (err, result) {
+                    console.log(result);
                     result.forEach(function(row){
                         var points = row.tierPoints + row.rankPoints;
                         if(row.tier == "unranked"){
