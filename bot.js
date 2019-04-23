@@ -46,7 +46,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                 request(playerData, function (error, response, body) {
                     data = JSON.parse(body)
-                    console.log(data.summonerLevel);
+                    console.log(data);
                     if(data.id == null){
                         bot.sendMessage({
                             to: channelID,
@@ -62,6 +62,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         request(playerRankData, function (error, response, body) {
                             console.log(isEmptyObject(body));
                             if(isEmptyObject(body) == false) {
+                                var insVar = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ rankData[0].summonerName +"','"+ data.summonerLevel +"','"+ rankData[0].summonerId+"','"+ rankData[0].tier +"','"+ rankData[0].rank +"','"+ rankData[0].leagueId +"')";
+                                
                                 bot.sendMessage({
                                     to: channelID,
                                     message:  "there is currently no rank for: " + args 
