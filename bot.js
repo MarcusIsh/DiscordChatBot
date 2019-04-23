@@ -103,7 +103,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 break;
             case 'csrRank' :
                 var users = "SELECT ranking.points AS tierPoints, tierRanking.points AS rankPoints, users.tier, users.rank, users.summonerName FROM users LEFT JOIN ranking ON users.tier = ranking.color LEFT JOIN tierRanking ON users.rank = tierRanking.rankNumber";
-                var rankStr;
+                var rankStr = "Sever Standings:\n\ ";
+                
                 db.query(users, function (err, result) {
                     result.forEach(function(row){
                     rankStr += row.summonerName + ": rank" + row.rank +" "+ row.tier +", "+ +row.tierPoints + +row.rankPoints + "\n\ ";     
