@@ -50,7 +50,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         }
 
                         request(playerRankData, function (error, response, body) {
-
+                            if(body.lenght == 0) {
+                                bot.sendMessage({
+                                to: channelID,
+                                message:  "there is currently no rank for:" + args 
+                             });
+                            } else {
                             rankData = JSON.parse(body)
                             console.log(rankData);
                             tier = rankData[0].tier
@@ -71,6 +76,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                                 to: channelID,
                                 message:  args + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
                              });
+                         }
                         });
                     }
                 });
