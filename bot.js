@@ -30,12 +30,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
         if (args.length == 5) {
             name = args[1] + "_" + args[2] + "_" + args[3];
+            name = name.replace("_", " ");
             console.log(name);
         } else if (args.length == 4) {
             name = args[1] + "_" + args[2];
+            name = name.replace("_", " ");
             console.log(name);
         } else if (args.length == 3) {
             name = args[1] + "_" + args[2];
+            name = name.replace("_", " ");
             console.log(name);
         } else {
             name = args.splice(1);
@@ -72,7 +75,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                                 })
                                 bot.sendMessage({
                                     to: channelID,
-                                    message: "there is currently no rank for: " + name.replace("_", " ")
+                                    message: "there is currently no rank for: " + name
                                 });
                             } else {
                                 rankData = JSON.parse(body)
@@ -94,7 +97,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                                 bot.sendMessage({
                                     to: channelID,
-                                    message: name.replace("_", " ") + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
+                                    message: name + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
                                 });
                             }
                         });
