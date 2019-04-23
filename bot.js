@@ -63,9 +63,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                             console.log(isEmptyObject(body));
                             if(isEmptyObject(body) == false) {
                                 bot.sendMessage({
-                                to: channelID,
-                                message:  "there is currently no rank for:" + args 
-                             });
+                                    to: channelID,
+                                    message:  "there is currently no rank for: " + args 
+                                });
                             } else {
                             rankData = JSON.parse(body)
                             console.log(rankData);
