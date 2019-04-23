@@ -60,6 +60,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         }
 
                         request(playerRankData, function (error, response, body) {
+                            console.log(isEmptyObject(body));
                             if(isEmptyObject(body)) {
                                 bot.sendMessage({
                                 to: channelID,
