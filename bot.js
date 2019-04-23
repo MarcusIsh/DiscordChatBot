@@ -63,7 +63,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                             console.log(isEmptyObject(body));
                             if(isEmptyObject(body) == false) {
                                 var noRank = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ data.name +"','"+ data.summonerLevel +"','"+ data.id+"','unranked','','')";
-                                
+                                db.query(noRank, function (err, result) {
+                                        console.log('successful');
+                                })
                                 bot.sendMessage({
                                     to: channelID,
                                     message:  "there is currently no rank for: " + args 
