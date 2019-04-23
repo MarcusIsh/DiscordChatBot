@@ -105,10 +105,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 var users = "select ranking.points, tierRanking.points, users.tier, users.rank, users.summonerName from users INNER JOIN ranking ON user.tier = ranking.color INNER JOIN users.rank = tierRanking.rankNumber";
                 db.query(users, function (err, result) {
                     console.log('successful');
-                    result.forEach(
+                    result.forEach(function(row){
                         console.log(row)
-                    );
-                })
+                });
+            })
         }
     }
 });
