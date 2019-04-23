@@ -110,6 +110,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         console.log(row)
                 });
             })
+                break;
+            case 'commands':
+                bot.sendMessage({
+                    to: channelID,
+                    message: 'commands\n\
+                             !rank <username> -- shows users rank, adds userdata to database to be tracked\n\
+                             !csrRank -- shows tracked users ranking. INFO: Points are added from tier(0 - 80, by 10s. 0 unranked, challenger 80) and rank(0 - 40, by 10s. 0 unranked, IV 40)'
+                });
         }
     }
 });
