@@ -62,7 +62,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         request(playerRankData, function (error, response, body) {
                             console.log(isEmptyObject(body));
                             if(isEmptyObject(body) == false) {
-                                var insVar = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ rankData[0].summonerName +"','"+ data.summonerLevel +"','"+ rankData[0].summonerId+"','"+ rankData[0].tier +"','"+ rankData[0].rank +"','"+ rankData[0].leagueId +"')";
+                                var noRank = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ data.name +"','"+ data.summonerLevel +"','"+ data.id+"','unranked','','')";
                                 
                                 bot.sendMessage({
                                     to: channelID,
