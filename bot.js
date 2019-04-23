@@ -26,16 +26,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var args = message.substring(1).split(' ');
         console.log(args.length);
         var cmd = args[0];
+        var name;
         
-        
-        args = args.splice(1);
-        
+        if(args.length == 4) {
+            name = args(1) + "_" + args(2) + "_" + args(3);
+            console.log(name);
+        } else if(args.length == 3) {
+            name = args(1) + "_" + args(2);
+            console.log(name);
+        } else if(args.length == 2) {
+            name = args(1) + "_" + args(2);
+            console.log(name);
+        } else {
+            name = args.splice(1);
+        }
         switch(cmd) {
             // !ping
             case 'rank':
                  var playerData = {
                     method: 'GET',
-                    url: 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+ args + '?api_key=' + auth.lolToken
+                    url: 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+ name + '?api_key=' + auth.lolToken
                 }
 
                 request(playerData, function (error, response, body) {
@@ -62,7 +72,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                                 })
                                 bot.sendMessage({
                                     to: channelID,
-                                    message:  "there is currently no rank for: " + args 
+                                    message:  "there is currently no rank for: " + name 
                                 });
                             } else {
                             rankData = JSON.parse(body)
@@ -83,7 +93,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                             
                             bot.sendMessage({
                                 to: channelID,
-                                message:  args + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
+                                message:  name + ' your solo queue ranking is: ' + ' ' + tier.toLowerCase() + ' ' + rank
                              });
                          }
                         });
