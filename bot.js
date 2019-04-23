@@ -1,6 +1,6 @@
 var Discord = require('discord.io');
 var logger = require('winston');
-var auth = require('./auth.json');
+var auth = require('../auth.json');
 var request = require("request");
 var db = require('../db.js');
 //var jQuery = require('jQuery');
