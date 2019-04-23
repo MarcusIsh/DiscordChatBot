@@ -16,8 +16,11 @@
     ],
     "dependencies": {
         "discord.io": "github:woor/discord.io#gateway_v6",
+        "jQuery": "^1.7.4",
+        "jsdom": "^15.0.0",
         "mysql": "^2.16.0",
         "request": "^2.88.0",
-        "winston": "^3.2.1"
+        "winston": "^3.2.1",
+        "xmlhttprequest": "^1.8.0"
     }
 }
