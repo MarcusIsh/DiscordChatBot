@@ -28,13 +28,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var cmd = args[0];
         var name;
 
-        if (args.length == 4) {
+        if (args.length == 5) {
             name = args[1] + "_" + args[2] + "_" + args[3];
             console.log(name);
-        } else if (args.length == 3) {
+        } else if (args.length == 4) {
             name = args[1] + "_" + args[2];
             console.log(name);
-        } else if (args.length == 2) {
+        } else if (args.length == 3) {
             name = args[1] + "_" + args[2];
             console.log(name);
         } else {
