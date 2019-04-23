@@ -50,7 +50,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         }
 
                         request(playerRankData, function (error, response, body) {
-                            if(body.lenght == 0) {
+                            if(isEmptyObject(body)) {
                                 bot.sendMessage({
                                 to: channelID,
                                 message:  "there is currently no rank for:" + args 
@@ -84,4 +84,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
          }
      }
 });
+
+function isEmptyObject(obj) {
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      return false;
+    }
+  }
+  return true;
+}
 
