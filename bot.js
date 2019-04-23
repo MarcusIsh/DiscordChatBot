@@ -36,7 +36,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                 request(playerData, function (error, response, body) {
                     data = JSON.parse(body)
-                    console.log(data);
+                    console.log(data[0]);
                     if(data.id == null){
                         bot.sendMessage({
                             to: channelID,
@@ -58,7 +58,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                             
                             db.query("select summonerName from users where summonerName ='" + rankData[0].summonerName + "'", function (err, result) {
                                 if(err) throw err;
-                                var insVar = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ rankData[0].summonerName +"','"+ data[0].summonerLevel +"','"+ rankData[0].summonerId+"','"+ rankData[0].tier +"','"+ rankData[0].rank +"','"+ rankData[0].leagueId +"')";
+                                var insVar = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ rankData[0].summonerName +"','"+ rankData[0].summonerLevel +"','"+ rankData[0].summonerId+"','"+ rankData[0].tier +"','"+ rankData[0].rank +"','"+ rankData[0].leagueId +"')";
                                 console.log(insVar);
                                 if(!result) {
                                     db.query(insVar, function (err, result) {
