@@ -102,7 +102,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
                 break;
             case 'csrRank' :
-                var users = "SELECT ranking.points, tierRanking.points, users.tier, users.rank, users.summonerName FROM users LEFT JOIN ranking ON users.tier = ranking.color LEFT JOIN tierRanking ON users.rank = tierRanking.rankNumber";
+                var users = "SELECT ranking.points AS tierPoints, tierRanking.points AS rankPoints, users.tier, users.rank, users.summonerName FROM users LEFT JOIN ranking ON users.tier = ranking.color LEFT JOIN tierRanking ON users.rank = tierRanking.rankNumber";
                 console.log(users);
                 db.query(users, function (err, result) {
                     console.log('successful');
