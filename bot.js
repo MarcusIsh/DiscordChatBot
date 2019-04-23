@@ -69,7 +69,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         }
 
                         request(playerRankData, function (error, response, body) {
-                            console.log(Object.keys(body).length == 0);
+                            console.log(Object.keys(body).length);
                             if(isEmptyObject(body) == true) {
                                 var noRank = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ data.name +"','"+ data.summonerLevel +"','"+ data.id+"','unranked','','')";
                                 db.query(noRank, function (err, result) {
