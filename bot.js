@@ -56,7 +56,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                             tier = rankData[0].tier
                             rank = rankData[0].rank
                             
-                            db.query("select summonerName from users where summonerName =" + rankData[0].summonerName, function (err, result) {
+                            db.query("select summonerName from users where summonerName ='" + rankData[0].summonerName + "'", function (err, result) {
                                 if(err) throw err;
                                 var insVar = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ rankData[0].summonerName +"','"+ rankData[0].rank +"','"+ rankData[0].leagueId +"')";
                                 console.log(insVar);
