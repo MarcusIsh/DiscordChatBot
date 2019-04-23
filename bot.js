@@ -61,7 +61,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                         request(playerRankData, function (error, response, body) {
                             console.log(isEmptyObject(body));
-                            if(isEmptyObject(body)) {
+                            if(isEmptyObject(body) == false) {
                                 bot.sendMessage({
                                 to: channelID,
                                 message:  "there is currently no rank for:" + args 
