@@ -24,12 +24,12 @@ bot.on('ready', function (evt) {
 bot.on('message', function (user, userID, channelID, message, evt) {
     if (message.substring(0, 1) == '!') {
         var args = message.substring(1).split(' ');
+        console.log(args);
         var cmd = args[0];
         
         
         args = args.splice(1);
-        var name = args.replace(/ /g,"_");;
-        console.log(name);
+        
         switch(cmd) {
             // !ping
             case 'rank':
