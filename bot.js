@@ -36,7 +36,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                 request(playerData, function (error, response, body) {
                     data = JSON.parse(body)
-                    console.log(data[0]);
+                    console.log(data.summonerLevel);
                     if(data.id == null){
                         bot.sendMessage({
                             to: channelID,
