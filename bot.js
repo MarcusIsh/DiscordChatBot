@@ -60,7 +60,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                                 if(err) throw err;
                                 var insVar = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ rankData[0].summonerName +"','"+ data.summonerLevel +"','"+ rankData[0].summonerId+"','"+ rankData[0].tier +"','"+ rankData[0].rank +"','"+ rankData[0].leagueId +"')";
                                 console.log(insVar);
-                                if(!result) {
+                                if(!result.length) {
                                     db.query(insVar, function (err, result) {
                                         console.log('successful');
                                     })
