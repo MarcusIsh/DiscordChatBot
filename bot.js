@@ -107,7 +107,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 
                 db.query(users, function (err, result) {
                     result.forEach(function(row){
-                    rankStr += row.summonerName + ": rank" + row.rank +" "+ row.tier +", "+ +row.tierPoints + +row.rankPoints + "\n\ ";     
+                    var points = row.tierPoints + row.rankPoints;
+                    rankStr += row.summonerName + ": rank" + row.rank +" "+ row.tier +", "+ points + "\n\ ";     
                 });
                 
                 bot.sendMessage({
