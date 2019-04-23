@@ -101,6 +101,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     }
                 });
                 break;
+            case 'csrRank' :
+                var users = "select ranking.points, tierRanking.points, users.tier, users.rank, users.summonerName from users INNER JOIN ranking ON user.tier = ranking.color INNER JOIN users.rank = tierRanking.rankNumber";
+                db.query(users, function (err, result) {
+                    console.log('successful');
+                    Object.keys(result).forEach(function(key) {
+                        var row = result[key];
+                        console.log(row.name)
+                    });
+                })
         }
     }
 });
