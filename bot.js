@@ -107,12 +107,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 
                 db.query(users, function (err, result) {
                     result.forEach(function(row){
-                    var points = row.tierPoints + row.rankPoints;
-                    if(row.tier == "unranked"){
-                        rankStr += row.summonerName + ": rank -> " + row.tier + ", "+ points + "\n\ ";
-                    }
-                    rankStr += row.summonerName + ": rank -> " + row.tier + " " + row.rank +", "+ points + "\n\ ";     
-                });
+                        var points = row.tierPoints + row.rankPoints;
+                        if(row.tier == "unranked"){
+                            rankStr += row.summonerName + ": rank -> " + row.tier + ", "+ points + "\n\ ";
+                        } else {
+                            rankStr += row.summonerName + ": rank -> " + row.tier + " " + row.rank +", "+ points + "\n\ ";     
+                        }
+                    });
                 
                 bot.sendMessage({
                     to: channelID,
