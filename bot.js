@@ -3,7 +3,7 @@ var logger = require('winston');
 var auth = require('./auth.json');
 var request = require("request");
 var db = require('../db.js');
-var jQuery = require('jQuery');
+//var jQuery = require('jQuery');
  
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -62,7 +62,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
                         request(playerRankData, function (error, response, body) {
                             console.log(Object.keys(body).length == 0);
-                            if(jQuery.isEmptyObject(body) == true) {
+                            if(!body) {
                                 var noRank = "insert into users (summonerName, summonerLevel, summonerId, tier, rank, playerId) values ( '"+ data.name +"','"+ data.summonerLevel +"','"+ data.id+"','unranked','','')";
                                 db.query(noRank, function (err, result) {
                                         console.log('successful');
